@@ -9,7 +9,7 @@ else
 fi
 
 # If the connection already exists, activate it.
-if nmcli c | awk '{print $1}' | tail -n+2 | grep "${ssid}" > /dev/null; then
+if nmcli c | awk '{print $1}' | tail -n+2 | grep -E "^${ssid}$" > /dev/null; then
 	nmcli c up "${ssid}"
 	exit $?
 fi
