@@ -50,7 +50,7 @@ if [[ $exit_code -eq 0 ]] ; then
 		echo -n "PASSWORD: " && read -r -s pass
 		nmcli c modify "${uuid}" wifi-sec.key-mgmt wpa-psk wifi-sec.psk "${pass}"
 	fi
-	
+
 	# Activate connection
 	nmcli c up "${uuid}"
 else
