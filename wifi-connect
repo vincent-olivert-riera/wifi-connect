@@ -19,7 +19,7 @@ timeout=$(( $(date +%s) + 60 ))
 info=
 while true; do
 	info=$(nmcli dev wifi list | grep "${ssid}")
-	if [[ ! -z "${info}" ]]; then
+	if [[ -n "${info}" ]]; then
 		break
 	else
 		current_time=$(date +%s)
