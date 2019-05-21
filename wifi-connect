@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -euo pipefail
+
 # Read SSID
 ssid=
 if [ -z "${1+x}" ]; then
@@ -18,7 +20,7 @@ fi
 timeout=$(( $(date +%s) + 60 ))
 info=
 while true; do
-	info=$(nmcli dev wifi list | grep "${ssid}")
+	info=$(nmcli dev wifi list | grep "${ssid}" || true)
 	if [[ -n "${info}" ]]; then
 		break
 	else
